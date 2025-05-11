@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/student', StudentController::class);
+Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
+
 
 
 

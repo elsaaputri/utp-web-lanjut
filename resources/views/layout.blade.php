@@ -91,8 +91,8 @@ div.content {
     <!-- The sidebar -->
     <div class="sidebar">
       <a class="active" href="#home">Home</a>
-      <a href="#news">Student</a>
-      <a href="#contact">Teacher</a>
+      <a href="{{ url('/student') }}">Student</a>
+      <a href={{ url('/teachers') }}">Teacher</a>
       <a href="#about">Courses</a>
       <a href="#about">Enrollment</a>
       <a href="#about">Payment</a>

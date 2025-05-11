@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use App\Models\Student;
-use Illuminate\View\view;
+use Illuminate\View\View;
+
 
 class StudentController extends Controller
 {
@@ -14,20 +15,24 @@ class StudentController extends Controller
 
     public function index(): View
     {
+        $students = Student::all();
+        return view('students.index', compact('students'));
 
 
     }
 
 
-    public function create()
+    public function create(): View
     {
 
-
+        return view('students.create');
     }
 
 
-    public function store(request $request)
+    public function store(request $request): RedirectResponse
     {
-        
+        $input = $request->all(); 
+       Student::create($input);
+       return redirect('student')->with('flash_message', 'Student Added!');
     }
 }

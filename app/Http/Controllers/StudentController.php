@@ -29,13 +29,21 @@ class StudentController extends Controller
     }
 
 
-    public function store(request $request): RedirectResponse
-    {
-        $input = $request->all(); 
-       Student::create($input);
-       return redirect('student')->with('flash_message', 'Student Added!');
-    }
-    
+    public function store(Request $request): RedirectResponse
+{
+    // Validasi input
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'addres' => 'required|string|max:255', // Pastikan addres ada
+        'mobile' => 'required|string|max:255',
+    ]);
+
+    // Membuat data siswa
+    Student::create($validated);
+
+    return redirect('student')->with('flash_message', 'Student Added!');
+}
+
     public function show(string $id): View
     {
         $student = Student::find($id);

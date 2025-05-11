@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;     
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,7 @@ Route::get('/', function () {
 
 Route::resource('/student', StudentController::class);
 Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
-
-
+Route::resource('/teachers', TeacherController::class);
 
 
 

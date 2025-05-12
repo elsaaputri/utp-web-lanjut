@@ -34,7 +34,7 @@ class StudentController extends Controller
     // Validasi input
     $validated = $request->validate([
         'name' => 'required|string|max:255',
-        'addres' => 'required|string|max:255', // Pastikan addres ada
+        'address' => 'required|string|max:255',
         'mobile' => 'required|string|max:255',
     ]);
 

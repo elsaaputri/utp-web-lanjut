@@ -96,7 +96,8 @@ div.content {
       <a href="{{ url('/courses') }}">Course</a>
       <a href="{{ url('/batches') }}">Batches</a>
       <a href="{{ url('/enrollments') }}">Enrollment</a>
-      <a href="#about">Payment</a>
+      <a href="{{ url('/payments') }}">Payments</a>
+
     </div>
   </div>
   <div class="col-md-9">

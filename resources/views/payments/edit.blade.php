@@ -1,30 +1,35 @@
 @extends('layout')
-
 @section('content')
-
 <div class="card">
-    <div class="card-header">Edit Course</div>
+    <div class="card-header">Edit Page</div>
     <div class="card-body">
 
-    <form action="{{ url('courses/' . $course->id) }}" method="post">
-        {!! csrf_field() !!}
-        @method("PATCH")
+        <form action="{{ url('payments/' . $payments->id) }}" method="post">
+            {{ csrf_field() }}
+            @method('PATCH')
+            <input type="hidden" name="id" id="id" value="{{ $payments->id }}" id="id" />
+            <label>Enrollment No</label></br>
 
-        <input type="hidden" name="id" id="id" value="{{ $course->id }}" />
 
-        <label>Name:</label><br>
-        <input type="text" name="name" id="name" value="{{ $course->name }}" class="form-control"><br>
+            <select name="enrollment_id" id="enrollment_id" class="form-control">
+    @foreach($enrollments as $id => $enrollno)
+        <option value="{{ $id }}" {{ $payments->enrollment_id == $id ? 'selected' : '' }}>
+            {{ $enrollno }}
+        </option>
+    @endforeach
+</select>
 
-        <label>Syllabus:</label><br>
-        <input type="text" name="syllabus" id="syllabus" value="{{ $course->syllabus }}" class="form-control"><br>
 
-        <label>Duration:</label><br>
-        <input type="text" name="duration" id="duration" value="{{ $course->duration }}" class="form-control"><br>
 
-        <input type="submit" value="Update" class="btn btn-success"><br>
-    </form>
+            <label>Paid date</label></br>
+            <input type="text" name="paid_date" id="paid_date" value="{{ $payments->paid_date }}" class="form-control" /></br>
+            
+            <label>Amount</label></br>
+            <input type="text" name="amount" id="duration" value="{{ $payments->amount }}" class="form-control" /></br>
+            
+            <input type="submit" value="Update" class="btn btn-success" /></br>
+        </form>
 
     </div>
 </div>
-
 @stop

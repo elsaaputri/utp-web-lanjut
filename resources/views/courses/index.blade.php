@@ -26,30 +26,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($courses as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->syllabus }}</td>
-                                        <td>{{ $item->duration }}</td>
-                                        <td>
-                                            <a href="{{ url('/courses/' . $item->id) }}" title="View Course">
-                                                <button class="btn btn-info btn-sm">View</button>
-                                            </a>
-                                            <a href="{{ url('/courses/' . $item->id . '/edit') }}" title="Edit Course">
-                                                <button class="btn btn-primary btn-sm">Edit</button>
-                                            </a>
-                                            <form method="POST" action="{{ url('/courses/' . $item->id) }}" accept-charset="UTF-8" style="display:inline" onsubmit="return confirm('Confirm delete?')">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Course">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+    @foreach($courses as $item)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->syllabus }}</td>
+            <td>{{ $item->duration() }}</td> {{-- ✅ Diubah di sini --}}
+            <td>
+                <a href="{{ url('/courses/' . $item->id) }}" title="View Course">
+                    <button class="btn btn-info btn-sm">View</button>
+                </a>
+                <a href="{{ url('/courses/' . $item->id . '/edit') }}" title="Edit Course">
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                </a>
+                <form method="POST" action="{{ url('/courses/' . $item->id) }}" accept-charset="UTF-8" style="display:inline" onsubmit="return confirm('Confirm delete?')">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Course">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                         </table>
                     </div>
                 </div>

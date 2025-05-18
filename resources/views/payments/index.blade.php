@@ -45,6 +45,14 @@
                     <button type="submit" class="btn btn-danger btn-sm" title="Delete Payment">
                         Delete
                     </button>
+
+                 <a href="{{ url('/report/report1/' . $item->id) }}" title="Print Payment">
+    <button type="button" class="btn btn-success">
+        <i class="fa fa-print" aria-hidden="true"></i> Print
+        <a href="{{ url('/report/report1/' . $item->id . '/edit') }}" title="Edit Payment">
+    </button>
+</a>
+
                 </form>
             </td>
         </tr>
